@@ -1,6 +1,6 @@
 resource "aws_launch_template" "launch-template" {
   name          = "${var.env}-${var.name}-lt"
-  image_id      = data.aws_ami.centos-8-ami.image_id
+  image_id      = "ami-0f3c7d07486cad139"
   instance_type = var.instance_type
 }
 
