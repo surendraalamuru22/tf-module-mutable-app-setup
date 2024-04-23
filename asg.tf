@@ -3,6 +3,10 @@ resource "aws_launch_template" "launch-template" {
   image_id      = "ami-0f3c7d07486cad139"
   instance_type = var.instance_type
 
+  iam_instance_profile {
+    name = aws_iam_instance_profile.instance_profile.name
+  }
+
   user_data = base64encode(templatefile("${path.module}/ansible-pull.sh", {
     COMPONENT = var.name
     ENV       = var.env
