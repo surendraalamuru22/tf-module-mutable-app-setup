@@ -2,6 +2,11 @@ resource "aws_launch_template" "launch-template" {
   name          = "${var.env}-${var.name}-lt"
   image_id      = "ami-0f3c7d07486cad139"
   instance_type = var.instance_type
+
+  user_data = base64encode(templatefile("${path.module}/ansible-pull.sh", {
+    COMPONENT = var.name
+    ENV       = var.env
+  }))
 }
 
 resource "aws_autoscaling_group" "asg" {
