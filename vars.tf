@@ -6,3 +6,6 @@ variable "min_size" {}
 variable "max_size" {}
 variable "BASTION_NODE" {}
 variable "vpc_id" {}
+variable "app_port_no" {}
+variable "PROMETHEUS_NODE" {}
+variable "vpc_cidr" {}
